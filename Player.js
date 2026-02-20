@@ -21,6 +21,6 @@ class Player {
   }
 
   draw() {
-    image(this.img, this.x - 12, this.y - 12, 24, 24);
+    image(this.img, this.x - 12, this.y - 12, 100, 67);
   }
 }
