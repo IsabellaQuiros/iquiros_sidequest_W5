@@ -1,8 +1,9 @@
 class Player {
-  constructor(x, y, speed) {
+  constructor(x, y, speed, img) {
     this.x = x;
     this.y = y;
     this.s = speed ?? 3;
+    this.img = img;
   }
 
   updateInput() {
@@ -20,8 +21,6 @@ class Player {
   }
 
   draw() {
-    fill(50, 110, 255);
-    noStroke();
-    rect(this.x - 12, this.y - 12, 24, 24, 5);
+    image(this.img, this.x - 12, this.y - 12, 24, 24);
   }
 }

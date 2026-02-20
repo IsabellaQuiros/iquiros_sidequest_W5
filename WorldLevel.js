@@ -9,7 +9,7 @@ class WorldLevel {
     this.obstacles = json.obstacles ?? [];
 
     // NEW: camera tuning knob from JSON (data-driven)
-    this.camLerp = json.camera?.lerp ?? 0.12;
+    this.camLerp = json.camera?.lerp ?? 0.03;
   }
 
   drawWorld() {
@@ -23,6 +23,7 @@ class WorldLevel {
     textStyle(ITALIC);
     textSize(40);
     text("Relax and take a trip through the heavens...", 40, 80);
-    text(" Use arrows to navigate.", 160, 120);
+    textSize(20);
+    text(" Use arrows to navigate.", 270, 110);
   }
 }

@@ -22,6 +22,7 @@ let worldData;
 let level;
 let player;
 let backgroundImg;
+let dove;
 
 let camX = 0;
 let camY = 0;
@@ -29,6 +30,7 @@ let camY = 0;
 function preload() {
   worldData = loadJSON("world.json"); // load JSON before setup [web:122]
   backgroundImg = loadImage("assets/Sunset Background.png");
+  dove = loadImage("assets/Dove Flying.png");
 }
 
 function setup() {
@@ -39,7 +41,7 @@ function setup() {
   level = new WorldLevel(worldData, backgroundImg);
 
   const start = worldData.playerStart ?? { x: 300, y: 300, speed: 3 };
-  player = new Player(start.x, start.y, start.speed);
+  player = new Player(start.x, start.y, start.speed, dove);
 
   camX = player.x - width / 2;
   camY = player.y - height / 2;
@@ -79,6 +81,6 @@ function draw() {
 function keyPressed() {
   if (key === "r" || key === "R") {
     const start = worldData.playerStart ?? { x: 300, y: 300, speed: 3 };
-    player = new Player(start.x, start.y, start.speed);
+    player = new Player(start.x, start.y, start.speed, dove);
   }
 }
