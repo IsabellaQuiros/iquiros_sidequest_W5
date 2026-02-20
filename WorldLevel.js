@@ -5,7 +5,7 @@ class WorldLevel {
     this.w = json.world?.w ?? 2400;
     this.h = json.world?.h ?? 1600;
     this.gridStep = json.world?.gridStep ?? 160;
-    this.backgroundImg = bgImg;
+    this.backgroundImg = bgImg; // replaced background colour with background image
 
     this.obstacles = json.obstacles ?? [];
 
@@ -14,11 +14,7 @@ class WorldLevel {
   }
 
   drawWorld() {
-    image(this.backgroundImg, 0, 0, this.w, this.h);
-
-    stroke(245);
-    for (let x = 0; x <= this.w; x += this.gridStep) line(x, 0, x, this.h);
-    for (let y = 0; y <= this.h; y += this.gridStep) line(0, y, this.w, y);
+    image(this.backgroundImg, 0, 0, this.w, this.h); // display image as world instead of grey rectangle
 
     noStroke();
     fill(170, 190, 210);
