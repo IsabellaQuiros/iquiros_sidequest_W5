@@ -1,11 +1,11 @@
 class WorldLevel {
-  constructor(json) {
+  constructor(json, bgImg) {
     this.schemaVersion = json.schemaVersion ?? 1;
 
     this.w = json.world?.w ?? 2400;
     this.h = json.world?.h ?? 1600;
-    this.bg = json.world?.bg ?? [235, 235, 235];
     this.gridStep = json.world?.gridStep ?? 160;
+    this.backgroundImg = bgImg;
 
     this.obstacles = json.obstacles ?? [];
 
@@ -13,14 +13,8 @@ class WorldLevel {
     this.camLerp = json.camera?.lerp ?? 0.12;
   }
 
-  drawBackground() {
-    background(220);
-  }
-
   drawWorld() {
-    noStroke();
-    fill(this.bg[0], this.bg[1], this.bg[2]);
-    rect(0, 0, this.w, this.h);
+    image(this.backgroundImg, 0, 0, this.w, this.h);
 
     stroke(245);
     for (let x = 0; x <= this.w; x += this.gridStep) line(x, 0, x, this.h);

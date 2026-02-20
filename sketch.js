@@ -21,12 +21,14 @@ const VIEW_H = 480;
 let worldData;
 let level;
 let player;
+let backgroundImg;
 
 let camX = 0;
 let camY = 0;
 
 function preload() {
   worldData = loadJSON("world.json"); // load JSON before setup [web:122]
+  backgroundImg = loadImage("assets/Sunset Background.png");
 }
 
 function setup() {
@@ -34,7 +36,7 @@ function setup() {
   textFont("sans-serif");
   textSize(14);
 
-  level = new WorldLevel(worldData);
+  level = new WorldLevel(worldData, backgroundImg);
 
   const start = worldData.playerStart ?? { x: 300, y: 300, speed: 3 };
   player = new Player(start.x, start.y, start.speed);
@@ -64,8 +66,6 @@ function draw() {
   const camLerp = level.camLerp; // ← data-driven now
   camX = lerp(camX, targetX, camLerp);
   camY = lerp(camY, targetY, camLerp);
-
-  level.drawBackground();
 
   push();
   translate(-camX, -camY);
